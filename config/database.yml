@@ -1,0 +1,12 @@
+# For PostgreSQL:
+development: &development
+  adapter: postgresql
+  database: multiapp_dev
+  host: localhost
+  encoding: utf8
+  schema_search_path: public
+  username:
+  password:
+
+development:
+  <<: *development

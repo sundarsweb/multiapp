@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Engine Example</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="#">Multiple App Using Engines</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li><%= link_to "Products", manage_product_engine.products_path %></li>
+            <li><%= link_to "Orders", store_engine.orders_path %></li>
+          </ul>
+            <% if current_user %>
+              <p class='navbar-text pull-right'><%= link_to "Logout", main_app.destroy_user_session_path, :method => :delete %></p>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <% flash.each do |name, msg| %>
+      <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+        <%= msg  %>
+      </div>
+    <% end %>
+
+    <%= yield %>
+
+  </div>
+
+</body>
+</html>

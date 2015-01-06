@@ -1,0 +1,29 @@
+== Single codebase serving multiple applications using rails engine
+
+Applying rails engine in reverse-engine mechanism with two domains by using Mountable engine.
+
+== Application Design
+
+* The main app serves as skeleton for the application.
+* Created Two mountable engines (Manage_product and Store).
+* Included both engines as gem and placed inside vendor/engine directory.
+* The landing homepage will have seperate links to both engine functionalities.
+* Depending on the link clicked the respective engine will process.
+* These mounted engines also communicate across each other using engine namespace (i.e., class_name => 'EngineNamespace::EngineModel')
+* Store Engine URL - /store/orders
+* Manage Product Engine URL - /manage_product/products
+
+== Install Instructions
+
+* Run bundle install
+* Run bundle exec rake manage_product:install:migrations to copy the manage_product migrations to the main rails app.
+* Run bundle exec rake store:install:migrations to copy the store migrations to the main rails app.
+* Run rake db:seed to load database with values.
+* Run bundle exec rake db:migrate to migrate the database.
+* Start Rails server to run application
+* Default Username - test@yopmail.com | Password - password-1
+
+
+== TODO
+
+* Show relevant links based on Domain/URL entered (In progress)
