@@ -20,6 +20,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'less-rails'
+gem 'therubyracer'
 gem 'jquery-rails'
 gem 'devise'
 gem 'twitter-bootstrap-rails'
